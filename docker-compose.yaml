@@ -36,9 +36,13 @@ services:
       context: ./dockerfiles
       dockerfile: composer.dockerfile
     volumes:
-      - ./src:/var/www/html:delegated
+      - ./src:/var/www/html
   # artisian:
-  # npm:
-
+  npm:
+    image: node:14-alpine
+    working_dir: /var/www/html
+    entrypoint: ["npm"]
+    volumes:
+      - ./src:/var/www/html
 volumes:
   notes:
